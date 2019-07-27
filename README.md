@@ -5,7 +5,10 @@
 
 
 1) Using Redux and AsyncStorage
-- npm install --save redux react-redux redux-thunk lodash 
+- Initialize expo project w/ tabs
+- Create an "AuthLoading" and "Auth" screen and place those in your switchnavigator, configure the initial route as "AuthLoading"
+- npm install --save redux react-redux redux-thunk lodash
+
 
 #### In progress
 
