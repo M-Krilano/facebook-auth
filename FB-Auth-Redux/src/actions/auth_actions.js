@@ -1,14 +1,14 @@
 import { Facebook } from "expo";
-import { AsyncStorage } from "react-native";
+import { SecureStore } from "react-native";
 import { fb_id } from "../keys/index";
 import { FACEBOOK_LOGIN_FAIL, FACEBOOK_LOGIN_SUCCESS } from "./types";
 
-// How to use AsyncStorage:
-// AsyncStorage.setItem('fb_token', token);
-// AsyncStorage.getItem('fb_token');
+// How to use SecureStore:
+// SecureStore.setItem('fb_token', token);
+// SecureStore.getItem('fb_token');
 
 export const facebookLogin = () => async dispatch => {
-  let token = await AsyncStorage.getItem("fb_token");
+  let token = await SecureStore.getItem("fb_token");
 
   if (token) {
     // Dispatch an action saying FB login is done
@@ -28,6 +28,6 @@ const doFacebookLogin = async dispatch => {
     return dispatch({ type: FACEBOOK_LOGIN_FAIL });
   }
 
-  await AsyncStorage.setItem("fb_token", token);
+  await SecureStore.setItem("fb_token", token);
   dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
 };
