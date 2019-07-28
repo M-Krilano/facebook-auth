@@ -1,5 +1,5 @@
 import React from "react";
-import { AsyncStorage, Button, Text, View } from "react-native";
+import { SecureStore, Button, Text, View } from "react-native";
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -7,7 +7,7 @@ class HomeScreen extends React.Component {
   };
 
   deleteToken = () => {
-    AsyncStorage.removeItem("fb_token");
+    SecureStore.deleteItemAsync("fb_token");
   };
   render() {
     return (
