@@ -4,11 +4,11 @@ import { fb_id } from "../keys/index";
 import { FACEBOOK_LOGIN_FAIL, FACEBOOK_LOGIN_SUCCESS } from "./types";
 
 // How to use SecureStore:
-// SecureStore.setItem('fb_token', token);
-// SecureStore.getItem('fb_token');
+// SecureStore.setItemAsync('fb_token', token);
+// SecureStore.getItemAsync('fb_token');
 
 export const facebookLogin = () => async dispatch => {
-  let token = await SecureStore.getItem("fb_token");
+  let token = await SecureStore.getItemAsync("fb_token");
 
   if (token) {
     // Dispatch an action saying FB login is done
@@ -28,6 +28,6 @@ const doFacebookLogin = async dispatch => {
     return dispatch({ type: FACEBOOK_LOGIN_FAIL });
   }
 
-  await SecureStore.setItem("fb_token", token);
+  await SecureStore.setItemAsync("fb_token", token);
   dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
 };
